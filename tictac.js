@@ -1,7 +1,7 @@
 const boxes = document.querySelectorAll(".box")
 const reset = document.getElementById("reset-btn")
 
-// console.log(boxes)
+
 let isX=false;
 let arrbox = [];
 let boxesChecked = [];
@@ -41,32 +41,32 @@ function playGame () {
             console.log(box.value)
             if(!isX && box.textContent == "" && box.value==false){
                 box.value = true;
-                box.textContent="X"
+                box.textContent=players[0];
                 box.className +=" text-7xl flex justify-center items-center"
-                // console.log(index)
+
                 arrbox[index]=box.textContent;
                 isX = true;
-                console.log(arrbox)
-                boxesChecked.push("X")
+                
+                boxesChecked.push(players[0])
                 playerLastSpot = index;
             }else if(isX && box.textContent == "" && box.value==false){
                 box.value = true;
-                box.textContent="O";
+                box.textContent=players[1];
                 box.className +=" text-7xl flex justify-center items-center"
                 arrbox[index]=box.textContent;
                 isX = false;
-                console.log(arrbox)
-                boxesChecked.push("O")
+                
+                boxesChecked.push(players[1])
                 playerLastSpot = index
             }
             console.log(box.value)
             winnerOrNot = gameLogic(arrbox, playerLastSpot);
   
-            if(winnerOrNot == "X"){
-                alert("X is the winner");
+            if(winnerOrNot == players[0]){
+                alert(players[0] +" is the winner");
                 winner = true;
-            }else if(winnerOrNot == "O"){
-                alert("O is the winner");
+            }else if(winnerOrNot == players[1]){
+                alert(players[1] +" is the winner");
                 winner = true;
             }
             else if(winnerOrNot == "none" && boxesChecked.length==9){
